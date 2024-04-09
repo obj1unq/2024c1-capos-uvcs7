@@ -1,3 +1,4 @@
+ 
 object espadaDelDestino {
 	var primeraVez = true
 	

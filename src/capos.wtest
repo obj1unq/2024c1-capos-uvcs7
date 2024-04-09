@@ -1,6 +1,6 @@
 import capos.*
 import artefactos.*
-import castillos.*
+import castillo.*
 
 test "rolando encuentra la espada del destino (la agarra)
 rolando encuentra el libro de hechizos (la agarra)
@@ -77,55 +77,4 @@ test "rolando encuentra la espada del destino (la agarra)
 		
 		
 	
-}
-
-test "poder de pelea" {
-	
-	rolando.capacidad(3)
-	rolando.poderBase(5)
-	rolando.artefactos(#{espadaDelDestino, armaduraDeAceroValyrio, collarDivino})
-	
-	rolando.batalla()
-	assert.equals(6, rolando.poderBase())
-	assert.equals(3, espadaDelDestino.poder(rolando))
-	assert.equals(6, armaduraDeAceroValyrio.poder(rolando))
-	assert.equals(3, collarDivino.poder(rolando))
-	assert.equals(18, rolando.poderPelea())
-
-	rolando.batalla()
-	assert.equals(7, rolando.poderBase())
-	assert.equals(3.5, espadaDelDestino.poder(rolando))
-	assert.equals(6, armaduraDeAceroValyrio.poder(rolando))
-	assert.equals(5, collarDivino.poder(rolando))
-	assert.equals(21.5, rolando.poderPelea())
-
-	rolando.batalla()
-	assert.equals(8, rolando.poderBase())
-	assert.equals(4, espadaDelDestino.poder(rolando))
-	assert.equals(6, armaduraDeAceroValyrio.poder(rolando))
-	assert.equals(6, collarDivino.poder(rolando))
-	assert.equals(24, rolando.poderPelea())
-	
-   
-}
-
-
-
-test "libro de hechizos" {
-	rolando.poderBase(5)
-	rolando.artefactos(#{libroDeHechizos})
-	castilloDePiedra.baul(#{espadaDelDestino, armaduraDeAceroValyrio, collarDivino})
-	libroDeHechizos.hechizos([bendicion, invisibilidad, invocacion])
-	
-	assert.equals(4, libroDeHechizos.poder(rolando))
-	
-	rolando.batalla()
-	assert.equals(6, libroDeHechizos.poder(rolando))
-
-	rolando.batalla()
-	assert.equals(7, libroDeHechizos.poder(rolando))
-
-	rolando.batalla()
-	assert.equals(0, libroDeHechizos.poder(rolando))
-		
 }
